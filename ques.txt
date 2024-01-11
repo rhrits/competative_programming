@@ -1,0 +1,1 @@
+Write a C++ program for a given two integers x and n, write a function to compute x^n.
