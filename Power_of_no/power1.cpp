@@ -1,3 +1,6 @@
+//pow(x, n) using recursion
+
+
 #include <iostream>
 using namespace std;
 
