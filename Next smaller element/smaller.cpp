@@ -1,44 +1,35 @@
-
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <stack>
 
 using namespace std;
 
-vector<int> SmallerElements(const vector<int>& arr){
-vector<int> output;
-stack<int> s;
+vector<int> smaller(const vector<int>& arr) {
+    vector<int> output;
+    stack<int> s;
+    int n = arr.size();
 
-for(i=0; i<n; i++){
-    while(s.empty() && stop() >= arr[i]){
-        s.pop();
-    }
-    if(s.empty())
-    {
-        output.push_back(-1);
-    }
-        {
-            else{
-                ans.push_back(stop());
-            }
+    for (int i = 0; i < n; i++) {
+        while (!s.empty() && arr[s.top()] >= arr[i]) {
+            s.pop();
         }
-
-    s.push(arr[i]);    
+        if (s.empty()) {
+            output.push_back(-1);
+        } else {
+            output.push_back(arr[s.top()]);
+        }
+        s.push(i);
     }
 
-    return
-
+    return output;
 }
-
-
-
-
 
 int main() {
     vector<int> arr = {1, 6, 4, 12, 3, 8};
 
-    vector<int> nextSmaller = SmallerElements(arr);
+    vector<int> result = smaller(arr);
 
-    
-    for (int i : nextSmaller) {
+    for (int i : result) {
         cout << i << " ";
     }
 
