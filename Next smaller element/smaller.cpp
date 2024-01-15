@@ -2,6 +2,8 @@
 #include<iostream>
 
 using namespace std;
+
+vector<int> SmallerElements(const vector<int>& arr){
 vector<int> output;
 stack<int> s;
 
@@ -22,7 +24,9 @@ for(i=0; i<n; i++){
     s.push(arr[i]);    
     }
 
-    
+    return
+
+}
 
 
 
