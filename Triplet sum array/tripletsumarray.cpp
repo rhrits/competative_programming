@@ -1,40 +1,43 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int main()
-{
-    int n = 7;
-    int arr[] = {2, 1, 4, 6, 3, 8, 7};
-    int k = 11;
+int countTripletsWithSumSmallerThanTarget(vector<int>& arr, int targetSum) {
+    int n = arr.size();
     int count = 0;
 
-    int first = 0;
+    
+    sort(arr.begin(), arr.end());
 
-    while (first < n)
-    {
-        int second = first + 1;
-        int third = n - 1;
+    for (int i = 0; i < n - 2; ++i) {
+        int left = i + 1;
+        int right = n - 1;
 
-        while (second < third)
-        {
-            int pos = arr[first] + arr[second] + arr[third];
+        while (left < right) {
+            int currentSum = arr[i] + arr[left] + arr[right];
 
-            if (pos > k)
-            {
-                third--;
-            }
-            else
-            {
-                cout << arr[first] << " " << arr[second] << " " << arr[third] << "\n";
-                count++;
-                second++;
+           if (currentSum <= targetSum) {
+                count += (right - left);
+                left++;
+            } else {
+                right--;
             }
         }
-
-        first++;
     }
 
-    cout << count;
+    return count;
+}
+
+int main() {
+   
+    vector<int> arr = {2, 1, 4, 6, 3, 8, 7};
+    int targetSum = 11;
+
+    int result = countTripletsWithSumSmallerThanTarget(arr, targetSum);
+
+    cout << "Count of triplets with sum less than or equal to " << targetSum << ": " << result << endl;
 
     return 0;
 }
