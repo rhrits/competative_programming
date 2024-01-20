@@ -4,33 +4,33 @@
 
 using namespace std;
 
-bool is_valid(const vector<int>& stalls, int cows, int min_distance) {
+bool is_valid(const vector<int>& stalls, int c, int md) {
     int count = 1;
-    int last_position = stalls[0];
+    int last_pos = stalls[0];
 
     for (int i = 1; i < stalls.size(); ++i) {
-        if (stalls[i] - last_position >= min_distance) {
+        if (stalls[i] - last_pos >= md) {
             count++;
-            last_position = stalls[i];
+            last_pos = stalls[i];
         }
     }
 
-    return count >= cows;
+    return count >= c;
 }
 
-int largmin(const vector<int>& stalls, int cows) {
-    int low = 0;
-    int high = stalls.back() - stalls[0];
+int largmin(const vector<int>& stalls, int c) {
+    int s = 0;
+    int e = stalls.back() - stalls[0];
     int result = -1;
 
-    while (low <= high) {
-        int mid = (low + high) / 2;
+    while (s <= e) {
+        int mid = (s + e) / 2;
 
-        if (is_valid(stalls, cows, mid)) {
+        if (is_valid(stalls, c, mid)) {
             result = mid;
-            low = mid + 1;
+            s = mid + 1;
         } else {
-            high = mid - 1;
+            e = mid - 1;
         }
     }
 
@@ -45,14 +45,14 @@ int main() {
         int n, c;
         cin >> n >> c;
 
-        vector<int> stall_locations(n);
+        vector<int> stall_loc(n);
         for (int j = 0; j < n; ++j) {
-            cin >> stall_locations[j];
+            cin >> stall_loc[j];
         }
 
-        sort(stall_locations.begin(), stall_locations.end());
+        sort(stall_loc.begin(), stall_loc.end());
 
-        int result = largmin(stall_locations, c);
+        int result = largmin(stall_loc, c);
         cout << result << endl;
     }
 
