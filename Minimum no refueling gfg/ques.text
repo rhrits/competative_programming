@@ -1,0 +1,20 @@
+Given an integer target which represents the total distance to be covered by a car on a straight road. Given another array, station[] of size N representing 
+petrol pumps where ith petrol pump is station[i][0] position away from the start and has station[i][1] amount of fuel. The car has an infinite petrol capacity 
+and starts with M amount of fuel. The task is to find the minimum number of times the car has to stop for refueling to reach the end when it uses one unit of 
+fuel for moving one unit distance.
+
+Note: If it reaches ith station with 0 fuel left, it can refuel from that petrol pump and all the fuel from a petrol pump can be transferred to the car.
+
+
+Input: target = 100, M = 1, stations = { {10, 100} }
+Output: -1
+Explanation: It is not possible to reach the target (or even the first gas station).
+
+Input: target = 100, M = 10, stations = { {10, 60}, {20, 30}, {30, 30}, {60, 40}}
+Output: 2
+Explanation: Starting with 10 units of fuel. 
+Drive to position 10, expanding 10 units of fuel. 
+Then refuel from 0 liters to 60 units of fuels. 
+Then, drive from position 10 to position 60, and refuel 40 liters of gas. 
+Then simply drive and reach the target. 
+Hence there are 2 refueling stops along the way.
